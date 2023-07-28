@@ -11,7 +11,7 @@ exports.getAllEmployees = async (request, response, next) => {
     if (String(typeof data) === "number") {
       return responseHandler(request, response, next, false, data, {});
     }
-    return responseHandler(request, response, next, true, 3046, EmployeeListResponse.collection(data))
+    return responseHandler(request, response, next, true, 3047, EmployeeListResponse.collection(data))
   } catch (err) {
     next(err);
   }

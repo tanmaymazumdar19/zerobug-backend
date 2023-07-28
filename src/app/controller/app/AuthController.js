@@ -1,5 +1,6 @@
 const responseHandler = require("../../../utils/responseHandler")
-const CompanyService = require('../../../services/CompanyService')
+const CompanyService = require('../../../services/CompanyService');
+const EmployeeService = require('../../../services/EmployeeService');
 const AuthService = require('../../../services/AuthService')
 
 exports.status = async (request, response, next) => {
@@ -54,13 +55,32 @@ exports.getCompany = async (request, response, next) => {
   try {
     let { companyId } = request?.query;
 
-    companyId = companyId.trim();
+    companyId = companyId?.trim();
     
-    const data = await CompanyService.getCompany(companyId);
-
+    let data = await CompanyService.getCompany(companyId);
+    data = data.toObject();
     /* Add company employees when schema is avaiable */
+    const companyUsers = await EmployeeService.getEmployeesOfCompany(companyId);
+
+    console.log("companyUsers", companyUsers);
+    
+    data["company_users"] = companyUsers;
     
     return responseHandler(request, response, next, true, 3044, data);
+  } catch(err) {
+    next(err)
+  }
+}
+
+exports.getEmployee = async (request, response, next) => {
+  try {
+    let { employeeId } = request?.query;
+
+    employeeId = employeeId?.trim();
+    
+    const data = await EmployeeService.getEmployee(employeeId);
+    
+    return responseHandler(request, response, next, true, 3046, data);
   } catch(err) {
     next(err)
   }

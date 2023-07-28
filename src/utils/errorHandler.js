@@ -8,6 +8,7 @@ exports.invalidEndPoint = () => {
 
 
 exports.makeErrorResponse = (error, request, response, next) => {
+  console.log(error);
   const status = error.statusCode || 500
   const message = error.message || 'Server Error'
   return response.status(status).json({ status: false, code: status, message, data: {} })

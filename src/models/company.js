@@ -8,7 +8,7 @@ const CompanySchema = mongoose.Schema(
       required: true,
       maxlength: [50, "email can not exceed {MAXLENGTH} characters"],
     },
-    domain: { type: String },
+    domain: [{ type: String }],
     logo: { type: String, required: false },
     location: {
       name: { type: String, required: false },

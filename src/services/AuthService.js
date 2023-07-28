@@ -40,7 +40,7 @@ exports.updateProfile = async (user, data) => {
         logo: data.logo || null,
         size: data.company_size || 0,
         employee_onbench: data.employee_onbench || 0,
-        domain: data.domain || ''
+        domain: data.domain || []
     }
     return await CompanyService.update(user.id, updatePatch)
 }

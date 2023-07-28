@@ -1,22 +1,28 @@
 const responseCodes = {
-    3000: 'Healthy Status',
-    3001: 'Login successful',
-    3002: 'Company registration successful',
-    3003: 'Company status updated successfully',
-    3042: 'Media uploaded',
-    3043: 'Profile update successful',
-    3044: 'Company fetched sucessfully',
-    3045: 'Employee added successfully',
+  3000: "Healthy Status",
+  3001: "Login successful",
+  3002: "Company registration successful",
+  3003: "Company status updated successfully",
+  3042: "Media uploaded",
+  3043: "Profile update successful",
+  3044: "Company fetched sucessfully",
+  3045: "Employee added successfully",
+  3046: "All employees fetches successfully",
 
-    //error codes
-    1010: 'Company already registered',
-    1011: 'Email must be provided',
-    1012: 'Password must be provided',
-    1013: 'Incorrect email',
-    1014: 'Incorrect password',
-    1015: 'Your company has not been approved yet',
-}
+  //error codes
+  1010: "Company already registered",
+  1011: "Email must be provided",
+  1012: "Password must be provided",
+  1013: "Incorrect email",
+  1014: "Incorrect password",
+  1015: "Your company has not been approved yet",
+};
 
+const status = {
+  AVAILABLE: "Available",
+  ENGAGED: "Engaged",
+};
 module.exports = {
-   RESPONSE_CODE: responseCodes,
-}
+  RESPONSE_CODE: responseCodes,
+  status
+};

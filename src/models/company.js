@@ -33,5 +33,5 @@ const CompanySchema = mongoose.Schema(
 );
 
 
-CompanySchema.index({ location: "2dsphere" });
-module.exports = mongoose.model("companies", CompanySchema);
+CompanySchema.index({ location: "2dsphere" })
+module.exports = mongoose.model("companies", CompanySchema)

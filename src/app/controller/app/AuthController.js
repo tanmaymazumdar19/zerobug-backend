@@ -37,3 +37,15 @@ exports.login = async (request, response, next) => {
     next(err)
   }
 }
+
+exports.updateProfile = async (request, response, next) => {
+  try {
+    const data = await AuthService.updateProfile(request.user, request.body)
+    if(String(typeof data) === 'number') {
+      return responseHandler(request, response, next, false, data, {})
+    }
+    return responseHandler(request, response, next, true, 3043, data)
+  } catch(err) {
+    next(err)
+  }
+}

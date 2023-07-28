@@ -29,3 +29,18 @@ exports.login = async (email, password) => {
 exports.getSignedToken = async (payload) => {
     return jwt.sign(payload, process.env.JWT_COMPANY_SECRET_KEY, { algorithm: 'HS256', expiresIn: process.env.JWT_EXPIRES_IN })
 }
+
+exports.updateProfile = async (user, data) => {
+    const updatePatch = {
+        location: {
+            name: data?.location?.name || "",
+            type: 'Point',
+            coordinates: data?.location?.coordinates || [0,0]
+        },
+        logo: data.logo || null,
+        size: data.company_size || 0,
+        employee_onbench: data.employee_onbench || 0,
+        domain: data.domain || ''
+    }
+    return await CompanyService.update(user.id, updatePatch)
+}

@@ -49,3 +49,19 @@ exports.updateProfile = async (request, response, next) => {
     next(err)
   }
 }
+
+exports.getCompany = async (request, response, next) => {
+  try {
+    let { companyId } = request?.query;
+
+    companyId = companyId.trim();
+    
+    const data = await CompanyService.getCompany(companyId);
+
+    /* Add company employees when schema is avaiable */
+    
+    return responseHandler(request, response, next, true, 3044, data);
+  } catch(err) {
+    next(err)
+  }
+}

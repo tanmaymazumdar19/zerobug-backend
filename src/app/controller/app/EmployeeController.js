@@ -22,7 +22,7 @@ exports.createEmployeeProfile = async (request, response, next) => {
       request.user.id,
       request.body
     );
-    return responseHandler(request, response, next, true, 3044, data);
+    return responseHandler(request, response, next, true, 3045, data);
   } catch (err) {
     next(err);
   }

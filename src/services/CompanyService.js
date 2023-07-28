@@ -1,9 +1,10 @@
-const Company = require('../models/company')
+const Company = require('../models/company');
 const uuid = require('uuid')
 const { sendWelcomeMail } = require('../utils/SESMail')
 const { generateRandomString } = require('../utils/general')
 const { encrypt } = require('../utils/argon');
-const {companyStatusEnum} = require('../config/enums')
+const {companyStatusEnum} = require('../config/enums');
+const mongoose = require('mongoose');
 
 exports.create = async (data) => {
   return Company.create(data)
@@ -47,4 +48,23 @@ exports.updateCompanyStatus = async (companyId, status) => {
    return await Company.findByIdAndUpdate(companyId, {
       is_approved: status
    }, {new: true});
-} 
+}
+
+exports.getCompany = async (companyId) => {
+   if(!mongoose.Types.ObjectId.isValid(companyId)) {
+      const error = new Error('companyId must be a valid mongoDB id');
+      error.statusCode = 400;
+      throw error;
+   }
+
+   const foundCompany = await Company.findById(companyId);
+
+   if(!foundCompany) {
+      const error = new Error('company not found');
+      error.statusCode = 401;
+      throw error;
+   }
+
+   return foundCompany;
+}
+

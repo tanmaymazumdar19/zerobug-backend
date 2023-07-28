@@ -12,9 +12,7 @@ class JSONWebToken {
 
 
   async generateAuthToken(payload) {
-    return jwt.sign({
-      data: payload
-    }, this.secret, {expiresIn: this.expiresIn});  
+    return jwt.sign(payload, this.secret, {expiresIn: this.expiresIn});  
   }
 }
 

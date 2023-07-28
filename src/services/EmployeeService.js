@@ -1,7 +1,7 @@
 const Employee = require('../models/employee');
 const mongoose = require('mongoose');
 exports.getAllEmployee = async (user, data) => {
-
+  return await Employee.find({is_deleted: false})
 }
 
 exports.createEmployeeProfile = async (companyId, data) => {

@@ -2,6 +2,7 @@ const Company = require('../models/company')
 const uuid = require('uuid')
 const { sendWelcomeMail } = require('../utils/SESMail')
 const { generateRandomString } = require('../utils/general')
+const { encrypt } = require('../utils/argon')
 
 exports.create = async (data) => {
   return Company.create(data)
@@ -16,8 +17,9 @@ exports.createCompany = async (data) => {
    if(company) {
     return 1010
    }
-   const password = generateRandomString(10)
-   data.password = password
+   data.location = {
+    coordinates: [0,0]
+   }
+   data.password = await encrypt(data.password)
    await this.create(data)
-   await sendWelcomeMail(data.email, `Congratulations your registration was successful, Please use this ${password}.`)
 }

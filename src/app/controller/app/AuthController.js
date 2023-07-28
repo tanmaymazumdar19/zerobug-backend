@@ -60,7 +60,7 @@ exports.getCompany = async (request, response, next) => {
 
     /* Add company employees when schema is avaiable */
     
-    return responseHandler(request, response, next, true, 3043, data)
+    return responseHandler(request, response, next, true, 3044, data);
   } catch(err) {
     next(err)
   }

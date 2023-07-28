@@ -60,7 +60,7 @@ exports.getCompany = async (companyId) => {
    const foundCompany = await Company.findById(companyId);
 
    if(!foundCompany) {
-      const error = new Error('companyId not found');
+      const error = new Error('company not found');
       error.statusCode = 401;
       throw error;
    }

@@ -8,7 +8,7 @@ const CompanySchema = mongoose.Schema(
       required: true,
       maxlength: [50, "email can not exceed {MAXLENGTH} characters"],
     },
-    industry: { type: String },
+    domain: { type: String },
     logo: { type: String, required: false },
     location: {
         name: { type: String, required: false },
@@ -24,7 +24,7 @@ const CompanySchema = mongoose.Schema(
     employee_onbench: { type: Number },
     established_in: { type: String },
     description: { type: String },
-    ratings: { type: Number },
+    ratings: { type: Number, default: 0 },
     password: { type: String },
     is_approved: { type: String, enum: ['pending', 'declined', 'approved'], required: true, default: 'pending' },
     is_deleted: { type: Boolean, default: false },

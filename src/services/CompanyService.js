@@ -8,6 +8,10 @@ exports.create = async (data) => {
   return Company.create(data)
 }
 
+exports.update = async (id, data) => {
+  return Company.findOneAndUpdate({_id: id}, {$set: data})
+}
+
 exports.getOneCompany = async (email) => {
    return Company.findOne({ email: { $regex: `^${email}$`, $options: 'i' }, is_deleted: false })
 }

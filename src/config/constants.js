@@ -3,6 +3,8 @@ const responseCodes = {
     3001: 'Login successful',
     3002: 'Company registration successful',
     3042: 'Media uploaded',
+    3043: 'Profile update successfull',
+
     //error codes
     1010: 'Company already registered',
     1011: 'Email must be provided',

@@ -8,25 +8,25 @@ const CompanySchema = mongoose.Schema(
       required: true,
       maxlength: [50, "email can not exceed {MAXLENGTH} characters"],
     },
-    industry: { type: String, required: true },
+    industry: { type: String },
     logo: { type: String, required: false },
     location: {
         name: { type: String, required: false },
         type: { type: String, required: false, default: 'Point' },
         coordinates: [
-            { type: Number, required: false }, { type: Number, required: false }
+            { type: Number, required: false, default: 0 }, { type: Number, required: false, default: 0 }
         ]
     },
     gst_no: { type: String },
     document: { type: String },
-    tia_no: { type: String },
+    tin_no: { type: String },
     size: { type: Number },
-    available_employees: { type: Number },
+    employee_onbench: { type: Number },
     established_in: { type: String },
     description: { type: String },
     ratings: { type: Number },
     password: { type: String },
-    is_approved: { type: Boolean, required: true, default: false },
+    is_approved: { type: String, enum: ['pending', 'declined', 'approved'], required: true, default: 'pending' },
     is_deleted: { type: Boolean, default: false },
   },
   { timestamps: true, versionKey: false }

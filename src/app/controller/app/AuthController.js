@@ -12,7 +12,7 @@ exports.status = async (request, response, next) => {
 exports.registerCompany = async (request, response, next) => {
   try {
     await CompanyService.createCompany(request.body)
-    return responseHandler(request, response, next, true, 3001, 'Password has been sent to your email')
+    return responseHandler(request, response, next, true, 3002, 'Password has been sent to your email')
   } catch (error) {
     next(error)
   }

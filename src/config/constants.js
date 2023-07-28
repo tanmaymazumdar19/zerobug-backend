@@ -4,8 +4,9 @@ const responseCodes = {
     3002: 'Company registration successful',
     3003: 'Company status updated successfully',
     3042: 'Media uploaded',
-    3043: 'Profile update successfull',
+    3043: 'Profile update successful',
     3044: 'Company fetched sucessfully',
+    3045: 'Employee added successfully',
 
     //error codes
     1010: 'Company already registered',

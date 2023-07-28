@@ -7,7 +7,15 @@ exports.create = async (data) => {
   return Company.create(data)
 }
 
+exports.getOneCompany = async (email) => {
+   return Company.findOne({ email: { $regex: `^${email}$`, $options: 'i' }, is_deleted: false })
+}
+
 exports.createCompany = async (data) => {
+   const company = await this.getOneCompany(data.email)
+   if(company) {
+    return 1010
+   }
    const password = generateRandomString(10)
    data.password = password
    await this.create(data)

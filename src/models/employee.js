@@ -1,5 +1,12 @@
 const mongoose = require("mongoose");
 
+const ReviewSchema = mongoose.Schema({
+  from: { type: mongoose.Schema.Types.ObjectId, ref: 'companies', required: true },
+  rating: { type: Number, required: true },
+  comment: { type: String, required: true },
+});
+
+
 const EmployeeSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -21,7 +28,8 @@ const EmployeeSchema = mongoose.Schema(
     work_experience: { type: Number },
     resume: { type: String },
     skill_set: [{ type: String }],
-    ratings: { type: Number, default: 0 },
+    // ratings: { type: Number, default: 0 },
+    reviews: [ReviewSchema],
     work_flexibility: { type: String, enum: ["hybrid", "remote", "on-site"] },
     company_name: { type: String },
     company_id: { type: mongoose.Schema.ObjectId, ref: "companies" },

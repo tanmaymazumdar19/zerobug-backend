@@ -45,7 +45,7 @@ exports.contactCompany = async (request, response, next) => {
       request.user,
       request.body
     )
-    return responseHandler(request, response, next, true, 3048, data)
+    return responseHandler(request, response, next, true, 3049, data)
   } catch (err) {
     next(err)
   }

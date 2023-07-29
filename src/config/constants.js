@@ -11,6 +11,7 @@ const responseCodes = {
   3047: 'All employees fetches successfully',
   3048: 'File uploaded sucessfully',
   3049: 'Your mail has been successfully sent',
+  3050: 'success',
 
   //error codes
   1010: 'Company already registered',

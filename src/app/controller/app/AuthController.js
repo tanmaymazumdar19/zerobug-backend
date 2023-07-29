@@ -67,7 +67,7 @@ exports.getCompany = async (request, response, next) => {
     
     data["company_users"] = companyUsers;
     
-    return responseHandler(request, response, next, true, 3044, data);
+    return responseHandler(request, response, next, true, 3050, data);
   } catch(err) {
     next(err)
   }

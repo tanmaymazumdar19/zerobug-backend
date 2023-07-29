@@ -15,7 +15,7 @@ router.get('/status', AuthController.status)
 // company registration
 router.post('/register', AuthController.registerCompany)
 router.post('/upload', MediaController.uploadMedia)
-router.get('/company', isAuth, AuthController.getCompany);
+router.get('/company', AuthController.getCompany);
 router.get('/employee', isAuth, AuthController.getEmployee);
 router.post('/review-employee', isAuth, AuthController.reviewEmployee);
 

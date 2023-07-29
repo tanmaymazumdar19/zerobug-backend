@@ -11,7 +11,9 @@ class EmployeeListResponse extends Resource {
       ratings: this.ratings,
       company_name: this.company_name,
       work_experience: this.work_experience,
-      status:status[(this.status)?.toUpperCase()] || 'Available'
+      status:status[(this.status)?.toUpperCase()] || 'Available',
+      pricing: this?.pricing,
+      company_email: this?.company_id?.email
     }
   }
 }

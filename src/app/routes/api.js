@@ -17,6 +17,8 @@ router.post('/register', AuthController.registerCompany)
 router.post('/upload', MediaController.uploadMedia)
 router.get('/company', isAuth, AuthController.getCompany);
 router.get('/employee', isAuth, AuthController.getEmployee);
+router.post('/review-employee', isAuth, AuthController.reviewEmployee);
+
 
 // File upload
 router.post('/file-upload', MediaController.uploadFile)

@@ -1,7 +1,8 @@
 const responseHandler = require("../../../utils/responseHandler")
 const CompanyService = require('../../../services/CompanyService');
 const EmployeeService = require('../../../services/EmployeeService');
-const AuthService = require('../../../services/AuthService')
+const AuthService = require('../../../services/AuthService');
+const { response } = require("express");
 
 exports.status = async (request, response, next) => {
   try {
@@ -81,6 +82,29 @@ exports.getEmployee = async (request, response, next) => {
     const data = await EmployeeService.getEmployee(employeeId);
     
     return responseHandler(request, response, next, true, 3046, data);
+  } catch(err) {
+    next(err)
+  }
+}
+
+exports.reviewEmployee = async (request, response, next) => {
+  try {
+    let { employeeId, companyId, review } = request?.body;
+    
+    employeeId = employeeId?.trim();
+    companyId = companyId?.trim();
+    review = {
+      rating: review?.rating,
+      comment: review?.comment?.trim()
+    }
+    
+    console.log("reviewOuter", review);
+
+    await EmployeeService.reviewEmployee(employeeId, companyId, review);
+    
+    // employeeId = employeeId?.trim();
+    // const data = await EmployeeService.getEmployee(employeeId);
+    return responseHandler(request, response, next, true, 3000, {});
   } catch(err) {
     next(err)
   }

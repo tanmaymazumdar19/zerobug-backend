@@ -46,7 +46,9 @@ exports.getAllEmployee = async (user, data) => {
   }
   aggregatePipe.push({$match: {...queryBuilder}})
 
-  return await Employee.aggregate(aggregatePipe)
+  const result = await Employee.aggregate(aggregatePipe);
+
+  return await Employee.populate(result, {path: "company_id"});
 }
 
 exports.createEmployeeProfile = async (companyId, data) => {

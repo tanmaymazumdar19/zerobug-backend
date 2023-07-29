@@ -30,5 +30,6 @@ router.post('/update-profile', isAuth, AuthController.updateProfile)
 // employee
 router.post('/employee-list', isAuth, EmployeeController.getAllEmployees)
 router.post('/create-employee-profile', isAuth, EmployeeController.createEmployeeProfile)
+router.post('/contact', isAuth, EmployeeController.contactCompany)
 
 module.exports = router

@@ -28,7 +28,7 @@ exports.createCompany = async (data) => {
    }
    data.password = await encrypt(data.password)
    await this.create(data)
-   await sendWelcomeMail(data.email, `Congratulations your registration was successful, Please use this ${password}.`)
+//    await sendWelcomeMail(data.email, `Congratulations your registration was successful, Please use this ${password}.`)
 }
 
 exports.getCompanies = async (status) => {
@@ -68,3 +68,6 @@ exports.getCompany = async (companyId) => {
    return foundCompany;
 }
 
+exports.contactCompany = async () => {
+    
+}

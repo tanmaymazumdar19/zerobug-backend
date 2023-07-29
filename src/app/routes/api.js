@@ -18,6 +18,9 @@ router.post('/upload', MediaController.uploadMedia)
 router.get('/company', isAuth, AuthController.getCompany);
 router.get('/employee', isAuth, AuthController.getEmployee);
 
+// File upload
+router.post('/file-upload', MediaController.uploadFile)
+
 // company auth
 router.post('/login', AuthController.login)
 router.post('/update-profile', isAuth, AuthController.updateProfile)

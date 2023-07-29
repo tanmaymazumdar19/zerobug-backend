@@ -66,7 +66,9 @@ exports.getEmployee = async (employeeId) => {
       throw error;
    }
 
-   let foundEmployee = await Employee.findById(employeeId);
+   let foundEmployee = await Employee.findById(employeeId).populate({
+      path: 'company_id'
+   });
    
 
    if(!foundEmployee) {
@@ -75,8 +77,13 @@ exports.getEmployee = async (employeeId) => {
       throw error;
    }
    
+   foundEmployee = foundEmployee.toObject();
+
+   /* Add company email */
+   foundEmployee.company_email = foundEmployee?.company_id?.email;
+   foundEmployee.company_id = foundEmployee?.company_id?._id;
+   
    if(foundEmployee?.reviews?.length > 0) {
-      foundEmployee = foundEmployee.toObject();
 
       /* Find average review */
       let averageRating = 0;

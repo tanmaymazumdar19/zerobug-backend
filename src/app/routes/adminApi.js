@@ -8,7 +8,7 @@ router.use(cors());
 
 router.post('/login', adminController.login);
 
-router.get('/get-companies', adminAuthMiddleware, adminController.getCompanies);
+router.get('/get-companies', adminController.getCompanies);
 router.post('/update-company-status', adminAuthMiddleware, adminController.updateCompanyApprovalStatus);
 
 module.exports = router

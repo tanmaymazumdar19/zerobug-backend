@@ -22,7 +22,7 @@ class AdminController {
       const status = req?.query?.status?.trim();
 
       const unapprovedCompanies = await companyService.getCompanies(status);
-      makeResponse(req, res, next, 200, 3001, {unapprovedCompanies});
+      makeResponse(req, res, next, 200, 3050, {unapprovedCompanies});
     } catch(err) {
       next(err);
     }

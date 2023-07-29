@@ -13,7 +13,8 @@ class EmployeeListResponse extends Resource {
       work_experience: this.work_experience,
       status:status[(this.status)?.toUpperCase()] || 'Available',
       pricing: this?.pricing,
-      company_email: this?.company_id?.email
+      company_email: this?.company_id?.email,
+      resume: this?.resume ?? ''
     }
   }
 }

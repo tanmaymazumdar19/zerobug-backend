@@ -32,7 +32,7 @@ exports.uploadFile = async (request, response, next) => {
 
     const fileExtension = getExtension(request?.files?.file?.name);
     const fileUrl = await s3.upload(request?.files?.file, `media-upload/${uuid.v4()}.${fileExtension}`);
-    return responseHandler(request, response, next, true, 3045, fileUrl);
+    return responseHandler(request, response, next, true, 3045, {fileUrl});
   } catch(err) {
     next(err)
   }

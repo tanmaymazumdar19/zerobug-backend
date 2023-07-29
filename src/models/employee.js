@@ -26,8 +26,9 @@ const EmployeeSchema = mongoose.Schema(
     company_name: { type: String },
     company_id: { type: mongoose.Schema.ObjectId, ref: "companies" },
     timing: { type: String, enum: ["day-shift", "night-shift"] },
-    on_bench_availability: { type: Number },
+    on_bench_availability: { type: String },
     pricing: { type: Number },
+    status: { type: String, enum: ['available', 'engaged'], default: 'available' },
     is_deleted: { type: Boolean, default: false },
   },
   { timestamps: true, versionKey: false }

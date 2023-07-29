@@ -1,3 +1,4 @@
+const { EmployeeListResponse } = require("../../../resources/EmployeeListResponse");
 const EmployeeService = require("../../../services/EmployeeService");
 const responseHandler = require("../../../utils/responseHandler");
 
@@ -10,7 +11,7 @@ exports.getAllEmployees = async (request, response, next) => {
     if (String(typeof data) === "number") {
       return responseHandler(request, response, next, false, data, {});
     }
-    return responseHandler(request, response, next, true, 3043, data);
+    return responseHandler(request, response, next, true, 3047, EmployeeListResponse.collection(data))
   } catch (err) {
     next(err);
   }
